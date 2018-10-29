@@ -1,0 +1,542 @@
+$colors:(primery-color: #a29061,
+bg-color: #080c11,
+white:#fff);
+
+@function color($color-name) {
+    @return map-get($colors, $color-name)
+}
+
+$padding:65px 0;
+
+// queries
+
+$tablet:1025px;
+$mobile:767px;
+
+@mixin tablet {
+    @media(max-width: #{$tablet}) {
+        @content;
+    }
+}
+@mixin mobile {
+    @media (max-width: #{$mobile}){
+        @content;
+    }
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: color(bg-color);
+    background-image: url(../images/header-bg.png);
+    background-repeat: no-repeat;
+    background-size: 100% 1000px;
+    font-family: 'lato', sans-serif;
+    @include mobile{
+        background-size: auto;
+        background-position: top;
+    }
+}
+
+a {
+    color: color(white);
+    text-decoration: none;
+
+    &:hover {
+        color: color(white);
+        text-decoration: none;
+    }
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.img {
+    width: 100%;
+    height: auto;
+}
+.overlay{
+    background: rgba(0, 0, 0, 0.9);
+}
+header {
+    background: color(bg-color);
+    padding: 10px 0;
+    @include tablet{
+        text-align:center;
+    }
+
+    .holder {
+        border-top: 1px solid color(primery-color);
+        border-bottom: 1px solid color(primery-color);
+    }
+    .fab{
+        color: color(white);
+        font-size: 24px;
+    }
+    a {
+        font-size: 18px;
+        text-transform: capitalize;
+        color: color(primery-color);
+        margin: 0 20px !important;
+        display: block;
+
+        &:last-child {
+            margin: 0 0 0 20px !important;
+        }
+
+        &:hover {
+            color: color(primery-color)
+        }
+    }
+
+    .hvr-underline-from-center {
+        &:before {
+            background: color(primery-color) !important;
+        }
+    }
+}
+
+#banner {
+    background-image: url(../images/banner-bg.png);
+    background-size: cover;
+    height: 100%;
+    padding: 180px 0;
+    @include mobile{
+        padding: 75px 0;
+    }
+
+    h1 {
+        font-family: 'Great Vibes', cursive;
+        font-size: 100px;
+        text-transform: capitalize;
+        margin-bottom: 40px;
+        @include mobile{
+            font-size: 52px;
+        }
+
+        span {
+            font-size: 40px
+        }
+    }
+
+    p {
+        font-size: 24px;
+        width: 50%;
+        margin: 0 auto 60px;
+        @include mobile{
+            font-size: 18px;
+        }
+    }
+
+    a {
+        border: 1px solid color(bg-color);
+        padding: 15px 20px;
+        font-size: 24px;
+        color: color(bg-color);
+        text-transform: capitalize;
+        display: inline-block;
+        transition: .8s;
+        @include mobile{
+            font-size: 18px;
+        }
+
+        &:hover {
+            background: color(bg-color);
+            color: color(white)
+        }
+    }
+}
+
+main {
+    .heading {
+        text-align: center;
+
+        h1 {
+            font-family: 'Amatic SC', cursive;
+            font-size: 48px;
+            color: color(white);
+            padding: 0 0 20px;
+            margin: 0 0 40px;
+            background: url(../images/border-bottom.png) no-repeat 50% 100%;
+
+        }
+
+        .title {
+            font-size: 24px;
+            color: color(white);
+            font-weight: 300;
+        }
+
+        p {
+            font-size: 16px;
+            font-weight: 300;
+            color: color(primery-color);
+            margin: 40px 0;
+        }
+    }
+
+    #our-portfolio {
+        padding: $padding;
+        text-align: center;
+
+        li {
+            margin: 0 10px;
+
+            a {
+                font-size: 24px;
+                font-weight: 300;
+
+                &:hover {
+                    color: color(primery-color)
+                }
+
+                &:active {
+                    color: color(primery-color) rgba(162, 144, 97, 0.2)
+                }
+            }
+        }
+        .overlay{
+            position: relative;
+            margin: 10px;
+            &:hover .overlay-bg{
+                opacity: 1;
+            }
+        }
+        .overlay-bg {
+            background-color: rgba(162, 144, 97, 0.8);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: .8s ease-out;
+
+            .detail {
+                padding: 15px;
+            }
+
+            .fa-heart {
+                color: color(bg-color);
+                font-size: 26px;
+            }
+
+            span {
+                display: block;
+                font-family: 'Great Vibes', cursive;
+                font-size: 36px;
+                color: color(bg-color);
+                @include tablet{
+                    font-size: 30px;
+                }
+            }
+
+            p {
+                font-size: 16px;
+                color: color(bg-color);
+                margin: 0;
+                letter-spacing: -1px
+            }
+        }
+
+    }
+
+    #testimonial {
+        padding: $padding;
+
+        p {
+            width: 70%;
+            margin: 40px auto 80px;
+        }
+
+        .carousel-indicators {
+            li {
+                background: color(white)
+            }
+
+            .active {
+                background-color: color(primery-color)
+            }
+        }
+
+        .fa-angle-left,
+        .fa-angle-right {
+            color: color(primery-color);
+            font-size: 36px;
+        }
+    }
+    #video{
+        max-height: 500px;
+        
+    }
+    #process {
+        background-image: url(../images/process-bg.png);
+        background-size: cover;
+        background-position: center;
+        padding: $padding;
+        text-align: center;
+
+        h1 {
+            font-family: 'Great Vibes', cursive;
+            color: color(bg-color);
+            font-size: 60px;
+            text-transform: capitalize;
+            margin: 0 0 60px;
+        }
+
+        ul {
+            clear: both;
+            overflow: hidden;
+        }
+
+        li {
+            border: 1px solid color(bg-color);
+            height: 135px;
+            width: 135px;
+            border-radius: 50%;
+            text-align: center;
+            display: inline-block;
+            margin: 0 40px;
+            font-size: 20px;
+            text-transform: uppercase;
+            transition: .8s;
+            @include tablet{
+                margin: 0 30px 10px;
+            }
+            @include mobile{
+                margin: 0 10px 20px;
+            }
+            div{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+            }
+            &:hover {
+                background: color(white);
+                color: color(primery-color);
+                border-color: color(white)
+            }
+
+            .far,
+            .fas {
+                display: block;
+                font-size: 36px;
+
+            }
+        }
+
+        p {
+            margin: 60px 0 0;
+        }
+    }
+
+    #packages {
+        padding: $padding;
+
+        img {
+            margin: 50px 0;
+        }
+
+        p {
+            color: color(primery-color);
+            font-size: 16px;
+
+            a {
+                text-decoration: underline;
+            }
+        }
+
+        .title-bar {
+            padding: $padding;
+            text-align: center;
+            background-image: url(../images/title-bar.png);
+            background-size: cover;
+            background-position: center;
+
+            span {
+                font-size: 38px;
+                font-weight: 200;
+            }
+        }
+    }
+
+    #know-us {
+        .team {
+            margin: 0 0 160px;
+            @include mobile{
+                margin: 0;
+            }
+
+            p {
+                font-family: 'lato', sans-serif;
+                font-size: 16px;
+                color: color(primery-color)
+            }
+        }
+
+        .team-member {
+            .member {
+                background: #3e3a2d;
+                border: 1px solid color(primery-color);
+                font-family: 'lato', sans-serif;
+                @include mobile{
+                    margin: 125px 0 0;
+                }
+                .avatar {
+                    margin: -83px auto 0;
+                    max-width: 140px;
+                }
+
+                span {
+                    display: block;
+                    margin: 20px 0;
+                }
+                .name{
+                    font-size: 30px;
+                    color: color(white);
+                    text-transform: uppercase;
+                }
+                .member-email{
+                    font-size: 24px;
+                    color: color(white);
+                }
+                .member-contact{
+                    font-size: 30px;
+                    color: color(primery-color);
+                }
+                li{
+                    display: inline-block;
+                    font-size: 24px;
+                    margin: 0 10px 0 0;
+                    &:last-child{
+                        margin: 0;
+                    }
+                    a{
+                        color: color(primery-color);
+                    }
+                }
+            }
+
+        }
+    }
+    #contact-us{
+        background-image: url(../images/contact-us-bg.png);
+        background-position: center;
+        background-size: cover;
+        .overlay{
+            padding: $padding;
+        }
+        .heading{
+            h3{
+                font-size: 24px;
+                color: color(white)
+            }
+            .contact-detail{
+                margin: 40px 0 0;
+            }
+            span{
+                font-size: 16px;
+                display: block;
+                color: color(primery-color);
+
+            }
+            a{
+                color: color(primery-color);
+            }
+        }
+        form{
+            margin: 50px 0 0;
+            text-align: center;
+            input{
+                margin: 0 0 30px;
+                background: transparent;
+                border:2px solid color(primery-color);
+                border-radius: 0;
+                color: color(primery-color);
+                &::placeholder{
+                    color: color(primery-color);
+                }
+                &:focus{
+                    box-shadow: none;
+                }
+            }
+            textarea{
+                background: transparent;
+                border:2px solid color(primery-color);
+                border-radius: 0;
+                margin: 0 0 30px;
+                color: color(primery-color);
+                &::placeholder{
+                    color: color(primery-color);
+                }
+                &:focus{
+                    box-shadow: none;
+                }
+            }
+            button{
+                background: color(primery-color);
+                color: #000;
+                padding: 14px 90px;
+                font-size: 18px;
+                text-transform: uppercase;
+                border-radius: 15px;
+            }
+        }
+    }
+}
+footer{
+    padding: $padding;
+    .footer-logo{
+        margin: 0 0 25px;
+    }
+    .social-icon{
+        margin: 0 0 15px;
+        li{
+            display: inline-block;
+            font-size: 28px;
+            margin: 0 10px 0 0;
+            &:last-child{
+                margin: 0;
+            }
+        }
+    }
+    .fab{
+        color: color(primery-color);
+    }
+    .footer-nav{
+        text-transform: capitalize;
+        font-size: 18px;
+        font-family: 'lato', sans-serif;
+        a{
+            display: inline-block;
+            &:hover{
+                color: color(primery-color)
+            }
+        }
+    }
+    .author{
+        font-family: 'lato', sans-serif;
+        font-weight: 300;
+        font-size: 14px;
+        li{
+            margin: 20px 0;
+            &:last-child{
+                margin: 0;
+            }
+        }
+        .copyright{
+            color: color(white)
+        }
+        .designby{
+            color: color(primery-color)
+        }
+    }
+}
